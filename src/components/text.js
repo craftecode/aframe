@@ -84,7 +84,8 @@ module.exports.Component = registerComponent('text', {
     // `yOffset` to adjust generated fonts from tools that may have incorrect metrics.
     yOffset: {type: 'number', default: 0},
     // `zOffset` will provide a small z offset to avoid z-fighting.
-    zOffset: {type: 'number', default: 0.001}
+    zOffset: {type: 'number', default: 0.001},
+    xRotation: {type: 'number', default: 0}
   },
 
   init: function () {
@@ -332,6 +333,7 @@ module.exports.Component = registerComponent('text', {
     // Place text slightly in front to avoid Z-fighting.
     mesh.position.z = data.zOffset;
     mesh.scale.set(textScale, -1 * textScale, textScale);
+    mesh.rotation.x = data.xRotation;
   },
 
   /**
